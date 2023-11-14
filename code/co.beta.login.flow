@@ -1,0 +1,24 @@
+Flow co.beta.login
+     Basepath ""
+// Create new authentication service instance
+authService = Call io.jans.as.server.service.AuthenticationService#class 
+// Create new CdiUtil object
+cdiUtil = Call io.jans.service.cdi.util.CdiUtil#bean authService
+// Empty result object
+authResult = {}
+// Retry 3 times to get correct username and password
+Repeat 3 times max
+     // Loads the login page for username and password input
+     creds = RRF "login.ftlh" authResult
+     // Validate username and password
+     authResult.success = Call cdiUtil authenticate creds.username creds.password
+     // Keep the username in case user needs to retry authentication
+     authResult.uid = creds.username
+     // Check if the authentication was successful
+     When authResult.success is true
+          // Return username in case of successful authentication
+          it_faogq = { success: true, data: {userId: authResult.uid} }
+          Finish it_faogq
+// Max number of failed authentication attempts reached. Return false to end flow
+it_tzlqa = { success: false, error: "Your error message here" }
+Finish it_tzlqa

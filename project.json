@@ -1,0 +1,22 @@
+{
+    "projectName": "demo",
+    "description": "Lorem ipsum dolor sit amet",
+    "type": "community",
+    "author": "rizarsyi",
+    "version": "1.0.0",
+    "authorWebsite": "https://github.com/rizarsyi/supreme-tribble",
+    "githubUri": "https://github.com/rizarsyi/supreme-tribble",
+    "license": "MIT",
+    "lastUpdated": "1687579221725",
+    "tags": [
+        "openid-connect",
+        "authentication",
+        "community"
+    ],
+    "configs": {
+        "co.gluu.openid": {},
+        "co.beta.login": {}
+    },
+    "noDirectLaunch": [],
+    "name": "demo"
+}
